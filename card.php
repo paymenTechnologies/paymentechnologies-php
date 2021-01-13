@@ -23,7 +23,7 @@ class Card {
         $this->secret_key = $data['secret_key'];
 
         $this->array_params = array(
-            "card_number" => $this->card_number,
+            "ccn" => $this->card_number,
             "expire" => $this->expiration_month . '/' . $this->expiration_year,
             "cvc" => $this->cvc,
             "firstname" => $this->firstname,
