@@ -14,7 +14,7 @@ php -S localhost:8000
 
 
 
-# sample form data
+# sample form data,  please change the credentials to your own credentials
 
 authenticate_id:3616055c9aef906320afd0621cb309bb\
 authenticate_pw:0cf86254452d38e1513dcc7e36267fdd\
