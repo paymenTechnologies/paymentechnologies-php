@@ -1,13 +1,14 @@
 <?php
 
 include_once 'card.php';
-include_once 'paymentTechnology.php';
+include_once 'payment.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $data = $_POST;
 
     // important
+    // please change the credentials to your own credentials
     $data['secret_key'] = '5e181e41ebb8d0.80799555';
     $data['authenticate_id'] = '3616055c9aef906320afd0621cb309bb';
     $data['authenticate_pw'] = '0cf86254452d38e1513dcc7e36267fdd';
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $payment['signature'] = $signature;
 
-    $result = new paymentTechnology($payment);
+    $result = new Payment($payment);
     echo $result->Pay();
 
 
