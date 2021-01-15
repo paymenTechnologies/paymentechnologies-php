@@ -1,12 +1,12 @@
-# paymentechnology-php
+# paymentechnologies-php
 
 # clone project
 
-git clone https://github.com/apluszure/paymentechnology-php.git
+git clone https://github.com/paymenTechnologies/paymentechnologies-php.git
 
-# open project paymentechnology-php
+# open project paymentechnologies-php
 
-cd paymentechnology-php
+cd paymentechnologies-php
 
 # run project
 
