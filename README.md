@@ -41,7 +41,7 @@ type:API|3DSV\
 \
 -- additional fields,  3dsv
 
-dob:1990-01-01
-success_url: example-success.com
-fail_url: example-fail.com
-notify_url: example-notify.com
+dob:1990-01-01\
+success_url: example-success.com\
+fail_url: example-fail.com\
+notify_url: example-notify.com\
