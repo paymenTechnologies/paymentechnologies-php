@@ -51,12 +51,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // end signature segment information
     // only the above list need to calculate signature
 
+    // additional fields,  3dsv
+    if(isset($data['type']) && $data['type'] == '3DSV') {
+        $payment['dob'] = $data['dob'];
+        $payment['success_url'] = $data['success_url'];
+        $payment['fail_url'] = $data['fail_url'];
+        $payment['notify_url'] = $data['notify_url'];
+    }
+
     // add the signature to list
     $signature = $card->calculateSignature($payment);
 
     $payment['signature'] = $signature;
 
-    $result = new Payment($payment);
+    // integration type
+    $payment['type'] = $data['type'] ?? 'API';
+    
+    if($payment['type'] == 'API') {
+        $result = new Payment($payment);
+    } elseif ($payment['type'] == '3DSV') {
+        $result = new Payment($payment, "3DSV");
+    }
+    
     echo $result->Pay();
 
 

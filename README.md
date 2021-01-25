@@ -36,4 +36,12 @@ lastname:Smith\
 card_number:4111111111111111\
 expiration_month:12\
 expiration_year:24\
-cvc:465
+cvc:465\
+type:API|3DSV\
+\
+-- additional fields,  3dsv
+
+dob:1990-01-01
+success_url: example-success.com
+fail_url: example-fail.com
+notify_url: example-notify.com
