@@ -54,9 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // additional fields,  3dsv
     if(isset($data['type']) && $data['type'] == '3DSV') {
         $payment['dob'] = $data['dob'];
-        $payment['success_url'] = $data['success_url'];
-        $payment['fail_url'] = $data['fail_url'];
-        $payment['notify_url'] = $data['notify_url'];
+        $payment['success_url'] = urlencode($data['success_url']);
+        $payment['fail_url'] = urlencode($data['fail_url']);
+        $payment['notify_url'] = urlencode($data['notify_url']);
     }
 
     // add the signature to list
