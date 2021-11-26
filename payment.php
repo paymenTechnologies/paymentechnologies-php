@@ -10,8 +10,8 @@ class Payment {
 
     public function __construct($payment, $api_type = "API") {
         $this->payment = $payment;
-        $this->api_url = 'https://pay.paymentechnologies.co.uk/authorize_payment';
-        $this->api_url_3DSv = 'https://pay.paymentechnologies.co.uk/authorize3dsv_payment';
+        $this->api_url = 'https://pay1.paymentechnologies.co.uk/authorize_payment';
+        $this->api_url_3DSv = 'https://pay1.paymentechnologies.co.uk/authorize3dsv_payment';
         $this->api_type = $api_type;
     }
 
