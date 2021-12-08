@@ -1,7 +1,7 @@
 <?php
 
 include_once 'card.php';
-include_once 'payment.php';
+include_once 'paymenTechnologies.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'firstname' => $data['firstname'],
         'lastname' => $data['lastname'],
         'card_number' => $data['card_number'],
-        'expiration_month' => $data['expiration_month'],
-        'expiration_year' => $data['expiration_year'],
-        'cvc' => $data['cvc'],
+        'expiration_month' => $data['exp_month'],
+        'expiration_year' => $data['exp_year'],
+        'cvc' => $data['cvc_code'],
         'secret_key' => $data['secret_key']
     );
 
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // only the above list need to calculate signature
 
     // additional fields,  3dsv
-    if(isset($data['type']) && $data['type'] == '3DSV') {
+    if(isset($data['transaction_type']) && $data['transaction_type'] == '3DSV') {
         $payment['dob'] = $data['dob'];
         $payment['success_url'] = urlencode($data['success_url']);
         $payment['fail_url'] = urlencode($data['fail_url']);
@@ -65,16 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payment['signature'] = $signature;
 
     // integration type
-    $payment['type'] = $data['type'] ?? 'API';
+    // A => API version
+    // 3DSV > 3DSV version
+    $payment['transaction_type'] = $data['transaction_type'];
     
-    if($payment['type'] == 'API') {
-        $result = new Payment($payment);
-    } elseif ($payment['type'] == '3DSV') {
-        $result = new Payment($payment, "3DSV");
-    }
-    
-    echo $result->Pay();
+    $pay = new paymenTechnologies($payment);
+    $response = $pay->payment();
 
+    echo $response;
 
 } else {
     // set response code - 504 Not found
