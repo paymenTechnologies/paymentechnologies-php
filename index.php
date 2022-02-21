@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // important
     // please change the credentials to your own credentials
-    $data['secret_key'] = '5e181e41ebb8d0.80799555';
-    $data['authenticate_id'] = '3616055c9aef906320afd0621cb309bb';
-    $data['authenticate_pw'] = '0cf86254452d38e1513dcc7e36267fdd';
+    $data['secret_key'] = '61bb49f1e26ab5.50561485';
+    $data['authenticate_id'] = 'bddc56b7082e140b4f93fd693b033ddd';
+    $data['authenticate_pw'] = 'b3317d7870974f80d26b7d656e8de498';
 
 
     // card information
