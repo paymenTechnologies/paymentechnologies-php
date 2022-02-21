@@ -17,9 +17,9 @@ class Card {
         $this->firstname = $data['firstname'];
         $this->lastname = $data['lastname'];
         $this->card_number = $data['card_number'];
-        $this->expiration_month = $data['exp_month'];
-        $this->expiration_year = $data['exp_year'];
-        $this->cvc = $data['cvc_code'];
+        $this->expiration_month = $data['expiration_month'];
+        $this->expiration_year = $data['expiration_year'];
+        $this->cvc = $data['cvc'];
         $this->secret_key = $data['secret_key'];
 
         $this->array_params = array(
