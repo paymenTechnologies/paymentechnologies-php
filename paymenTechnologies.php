@@ -19,7 +19,7 @@ class  paymenTechnologies {
         // $this->api_url = 'https://api.paymentechnologies.co.uk/v2/authorize';
         // $this->api_url_3DSv = 'https://api.paymentechnologies.co.uk/v2/authorize-3dsv';
         
-        $this->api_type = $payment['transaction_type'];
+        $this->api_type = $payment['type'];
     }
 
     function payment()
