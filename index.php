@@ -9,13 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // important
     // please change the credentials to your own credentials
-    $data['secret_key'] = '5e181e41ebb8d0.80799555';
-    $data['authenticate_id'] = '3616055c9aef906320afd0621cb309bb';
-    $data['authenticate_pw'] = '0cf86254452d38e1513dcc7e36267fdd';
-
-    // type = 3DSV / API
-    // API for Non3DS / 3DSV for 3DS
-    $data['type'] = '3DSV';
+    // $data['secret_key'] = '61ada225b0c248.83763788';
+    // $data['authenticate_id'] = 'f546ef2cf2528ea73206873cc439ba28';
+    // $data['authenticate_pw'] = 'e19a5ecd06e75f7a7c46dd0f47c5655d';
 
 
     // card information
@@ -49,14 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'state' => $data['state'],
         'country' => $data['country'],
         'phone' => $data['phone'],
-        'transaction_hash' => $data['transaction_hash'],
+        // 'transaction_hash' => $data['transaction_hash'],
         'customerip' => $data['customerip']
     );
     // end signature segment information
     // only the above list need to calculate signature
 
     // additional fields,  3dsv
-    if(isset($data['type']) && $data['type'] == '3DSV') {
+    if(isset($data['transaction_type']) && $data['transaction_type'] == '3DSV') {
         $payment['dob'] = $data['dob'];
         $payment['success_url'] = urlencode($data['success_url']);
         $payment['fail_url'] = urlencode($data['fail_url']);
@@ -69,11 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payment['signature'] = $signature;
 
     // integration type
-    $payment['type'] = $data['type'];
+    // A => API version
+    // 3DSV > 3DSV version
+    $payment['transaction_type'] = $data['transaction_type'];
     
     $pay = new paymenTechnologies($payment);
     $response = $pay->payment();
 
+    echo 'Card Info: '. $data['card_info'] . '<br>';
+    echo 'Signature: '. $payment['signature'] . '<br>';
     echo $response;
 
 } else {
