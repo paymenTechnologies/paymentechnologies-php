@@ -29,7 +29,7 @@ class  paymenTechnologies {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_stream);
 
-        if($this->api_type == 'A') {
+        if($this->api_type == 'API') {
           curl_setopt($ch, CURLOPT_URL, $this->api_url);
         } elseif ($this->api_type == '3DSV'){
           curl_setopt($ch, CURLOPT_URL, $this->api_url_3DSv);
