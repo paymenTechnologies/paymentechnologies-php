@@ -67,13 +67,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // integration type
     // A => API version
     // 3DSV > 3DSV version
-    $payment['transaction_type'] = $data['transaction_type'];
     
-    $pay = new paymenTechnologies($payment);
+    $pay = new paymenTechnologies($payment, "A");
     $response = $pay->payment();
 
-    echo 'Card Info: '. $data['card_info'] . '<br>';
-    echo 'Signature: '. $payment['signature'] . '<br>';
+    echo "Card Info: ". $data['card_info'] . "\n";
+    echo "Signature: ". $payment['signature'] . "\n";
     echo $response;
 
 } else {
