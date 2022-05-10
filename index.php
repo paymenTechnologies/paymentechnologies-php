@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // A => API version
     // 3DSV > 3DSV version
     
-    $pay = new paymenTechnologies($payment, "A");
+    $pay = new paymenTechnologies($payment, $data['transaction_type'] ?? 'A');
     $response = $pay->payment();
 
     echo "Card Info: ". $data['card_info'] . "\n";
