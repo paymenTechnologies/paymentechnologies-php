@@ -37,7 +37,7 @@ card_number:4001919257537193\
 expiration_month:12\
 expiration_year:24\
 cvc:465\
-type:API|3DSV\
+
 \
 -- additional fields,  3dsv
 
