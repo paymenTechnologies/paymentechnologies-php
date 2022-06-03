@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'authenticate_id' => $data['authenticate_id'],
         'authenticate_pw' => $data['authenticate_pw'],
         'orderid' => $data['orderid'],
-        'transaction_type' => $data['transaction_type'],
+        'transaction_type' => 'A',
         'amount' => $data['amount'],
         'currency' => $data['currency'],
         'card_info' => $data['card_info'],
@@ -51,13 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // end signature segment information
     // only the above list need to calculate signature
 
-    // additional fields,  3dsv
-    if(isset($data['transaction_type']) && $data['transaction_type'] == '3DSV') {
-        $payment['dob'] = $data['dob'];
-        $payment['success_url'] = urlencode($data['success_url']);
-        $payment['fail_url'] = urlencode($data['fail_url']);
-        $payment['notify_url'] = urlencode($data['notify_url']);
-    }
+    // additional fields,  3DSV
+    // uncomment if 3DSV 
+    // comment if API
+    $payment['dob'] = $data['dob'];
+    $payment['success_url'] = urlencode($data['success_url']);
+    $payment['fail_url'] = urlencode($data['fail_url']);
+    $payment['notify_url'] = urlencode($data['notify_url']);
+    // end additional fields,  3DSV
+
 
     // add the signature to list
     $signature = $card->calculateSignature($payment);
