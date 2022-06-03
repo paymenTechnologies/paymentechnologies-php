@@ -54,10 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // additional fields,  3DSV
     // uncomment if 3DSV 
     // comment if API
-    $payment['dob'] = $data['dob'];
-    $payment['success_url'] = urlencode($data['success_url']);
-    $payment['fail_url'] = urlencode($data['fail_url']);
-    $payment['notify_url'] = urlencode($data['notify_url']);
+    // $payment['dob'] = $data['dob'];
+    // $payment['success_url'] = urlencode($data['success_url']);
+    // $payment['fail_url'] = urlencode($data['fail_url']);
+    // $payment['notify_url'] = urlencode($data['notify_url']);
     // end additional fields,  3DSV
 
 
