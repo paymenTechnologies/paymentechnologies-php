@@ -19,7 +19,6 @@ class  paymenTechnologies {
         // live
         // $this->api_url = 'https://api.paymentechnologies.co.uk/v2/authorize';
         // $this->api_url_3DSv = 'https://api.paymentechnologies.co.uk/v2/authorize-3dsv';
-        // $this->api_url_frictionless = 'https://api.paymentechnologies.co.uk/v2/authorize-frictionless';
         
         $this->api_type = $api_type;
     }
