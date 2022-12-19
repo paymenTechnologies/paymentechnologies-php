@@ -76,6 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 3DSV > 3DSV version
     // $pay = new paymenTechnologies($payment, '3DSV');
     // 
+    // FRICTIONLESS > FRICTIONLESS version
+    // $pay = new paymenTechnologies($payment, 'FRICTIONLESS');
     // ********** END ***********
 
     $pay = new paymenTechnologies($payment, 'A');
