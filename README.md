@@ -26,7 +26,7 @@ zip:94043\
 state:CA\
 country:USA\
 phone:+12345345345\
-transaction_hash:zqT5fqc3V1yIrFeE0rPjkaF2wSmldT6p5AXD8Qho5ONTINGw6nUiji79HEq4iI70n4gczl8fbusXhz5r8rmTRg==\ # optional
+transaction_hash:zqT5fqc3V1yIrFeE0rPjkaF2wSmldT6p5AXD8Qho5ONTINGw6nUiji79HEq4iI70n4gczl8fbusXhz5r8rmTRg== # optional \
 customerip:127.0.0.1\
 firstname:John\
 lastname:Smith\
