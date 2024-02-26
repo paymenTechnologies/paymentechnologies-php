@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // important
     // please change the credentials to your own credentials
-    // $data['secret_key'] = '61ada225b0c248.83763788';
-    // $data['authenticate_id'] = 'f546ef2cf2528ea73206873cc439ba28';
-    // $data['authenticate_pw'] = 'e19a5ecd06e75f7a7c46dd0f47c5655d';
+    $data['secret_key'] = '61ada225b0c248.83763788';
+    $data['authenticate_id'] = '3616055c9aef906320afd0621cb309bb';
+    $data['authenticate_pw'] = '0cf86254452d38e1513dcc7e36267fdd';
 
 
     // card information
@@ -28,6 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $card = new Card($cardInfo);
 
     $data['card_info'] = $card->encryptCardInfo();
+
+    // hash calculation
+    // $hashParams = [
+    //     $data['authenticate_id'],
+    //     $data['authenticate_pw'],
+    //     $data['orderid'],
+    //     $data['amount'],
+    //     $data['currency'],
+    //     $data['secret_key']
+    // ];
+
+    // $data['transaction_hash'] = hash("sha512", implode("|", $hashParams));
 
     // signature segment information
     $payment = array(
@@ -46,46 +58,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'country' => $data['country'],
         'phone' => $data['phone'],
         // 'transaction_hash' => $data['transaction_hash'],
-        'customerip' => $data['customerip']
+        'customerip' => $data['customerip'],
+        'dob' => $data['dob'],
+        'success_url' => urlencode($data['success_url']),
+        'fail_url' => urlencode($data['fail_url']),
+        'notify_url' => urlencode($data['notify_url'])
     );
     // end signature segment information
     // only the above list need to calculate signature
-
-    // additional fields,  3DSV
-    // uncomment if 3DSV 
-    // comment if API
-    // $payment['dob'] = $data['dob'];
-    // $payment['success_url'] = urlencode($data['success_url']);
-    // $payment['fail_url'] = urlencode($data['fail_url']);
-    // $payment['notify_url'] = urlencode($data['notify_url']);
-    // end additional fields,  3DSV
-
 
     // add the signature to list
     $signature = $card->calculateSignature($payment);
 
     $payment['signature'] = $signature;
 
-    // integration type
-    
-    // ********** IMPORTANT: ***********
-    // 
-    // A => API version
-    // $pay = new paymenTechnologies($payment, 'A');
-    // 
-    // 3DSV > 3DSV version
-    // $pay = new paymenTechnologies($payment, '3DSV');
-    // 
-    // FRICTIONLESS > FRICTIONLESS version
-    // $pay = new paymenTechnologies($payment, 'FRICTIONLESS');
-    // ********** END ***********
-
-    $pay = new paymenTechnologies($payment, 'A');
+    $pay = new paymenTechnologies($payment);
     $response = $pay->payment();
 
     echo "Card Info: ". $data['card_info'] . "\n";
     echo "Signature: ". $payment['signature'] . "\n";
     echo $response;
+
 
 } else {
     // set response code - 504 Not found
